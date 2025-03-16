@@ -14,13 +14,19 @@ class ProductCustomFields extends ObjectModel {
     public $id_product;
 
     /** @var string  */
-    public $my_text_field_example;
+    public $custom_label;
+
+    /** @var int Custom quantity */
+    public $custom_quantity;
 
     /** @var string  */
-    public $my_translatable_text_field_example;
+    public $custom_unit;
+
+    /** @var string */
+    public $custom_code;
 
     /** @var bool  */
-    public $my_switch_field_example;
+    public $enabled;
 
     /** @var string Object creation date */
     public $date_add;
@@ -32,8 +38,8 @@ class ProductCustomFields extends ObjectModel {
      * @see ObjectModel::$definition
      */
     public static $definition = [
-        'table' => 'democustomfields17',
-        'primary' => 'id_democustomfields17',
+        'table' => 'ts_distproducts',
+        'primary' => 'id_distproducts',
         'multilang' => true,
         'multilang_shop' => true,
         'fields' => [
@@ -41,18 +47,23 @@ class ProductCustomFields extends ObjectModel {
                 'type' => self::TYPE_INT,
                 'validate' => 'isUnsignedId'
             ],
-            'my_text_field_example' => [
-                'type' => self::TYPE_HTML,
-                'validate' => 'isCleanHtml'
+            'enabled' => [
+                'type' => self::TYPE_BOOL,
             ],
-            'my_translatable_text_field_example' => [
-                'type' => self::TYPE_HTML,
+            'custom_label' => [
+                'type' => self::TYPE_STRING,
                 'lang' => true,
                 'shop' => true,
-                'validate' => 'isCleanHtml'
             ],
-            'my_switch_field_example' => [
-                'type' => self::TYPE_BOOL
+            'custom_quantity' => [
+                'type' => self::TYPE_INT,
+                'validate' => 'isUnsignedInt'
+            ],
+            'custom_unit' => [
+                'type' => self::TYPE_STRING,
+            ],
+            'custom_code' => [
+                'type' => self::TYPE_STRING,
             ],
             'date_add' => [
                 'type' => self::TYPE_DATE,
